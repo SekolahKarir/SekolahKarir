@@ -1001,38 +1001,13 @@
     
     <form style="display:flex; flex-direction:column; gap:16px;">
 <script>
-document.querySelector("form").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const nama = document.querySelector('input[placeholder="Nama Lengkap"]').value;
-  const email = document.querySelector('input[placeholder="Email Aktif"]').value;
-  const kampus = document.querySelector('input[placeholder="Asal Kampus / Instansi"]').value;
-
-  fetch("https://script.google.com/macros/s/AKfycbyS9FsGvt6vXqyzSdkqLyoJ5tqflaL4xtKMTdELlxNwRfremM6y-SIj7D3g4vt94jfU/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      nama: nama,
-      email: email,
-      kampus: kampus
-    })
-  })
-  .then(res => res.text())
-  .then(data => {
-    alert("Data pendaftaran tersimpan!");
-  })
-  .catch(err => {
-    alert("Gagal kirim!");
-    console.error(err);
-  });
-});
 </script>
       <input type="text" placeholder="Nama Lengkap" class="email-input">
       <input type="email" placeholder="Email Aktif" class="email-input">
       <input type="text" placeholder="Asal Kampus / Instansi" class="email-input">
-      <button type="button" class="btn-primary" style="width:100%" onclick="alert('Data pendaftaran tersimpan!')">Daftar Sekarang</button>
+      <button type="submit" class="btn-primary" style="width:100%">
+  Daftar Sekarang
+</button>
     </form>
   </div>
 </div>
@@ -1139,6 +1114,35 @@ document.querySelector("form").addEventListener("submit", function(e) {
 		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
 	}
 	// ]]>
+</script>
+<script>
+document.querySelector("#registerModal form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const nama = document.querySelector('input[placeholder="Nama Lengkap"]').value;
+  const email = document.querySelector('input[placeholder="Email Aktif"]').value;
+  const kampus = document.querySelector('input[placeholder="Asal Kampus / Instansi"]').value;
+
+  fetch("https://script.google.com/macros/s/AKfycbyS9FsGvt6vXqyzSdkqLyoJ5tqflaL4xtKMTdELlxNwRfremM6y-SIj7D3g4vt94jfU/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      nama: nama,
+      email: email,
+      kampus: kampus
+    })
+  })
+  .then(res => res.text())
+  .then(data => {
+    alert("Data pendaftaran tersimpan!");
+  })
+  .catch(err => {
+    alert("Gagal kirim!");
+    console.error(err);
+  });
+});
 </script>
 </body>
 
