@@ -1000,7 +1000,7 @@
     <p style="font-family:'Inter',sans-serif; font-size:0.9rem; color:#64748B; margin-bottom:24px;">Lengkapi data diri lo buat dapet akses prioritas di Sekolah Karir.</p>
     
     <form style="display:flex; flex-direction:column; gap:16px;">
-	<script>
+<script>
 document.querySelector("form").addEventListener("submit", function(e) {
   e.preventDefault();
 
@@ -1010,6 +1010,9 @@ document.querySelector("form").addEventListener("submit", function(e) {
 
   fetch("https://script.google.com/macros/s/AKfycbyS9FsGvt6vXqyzSdkqLyoJ5tqflaL4xtKMTdELlxNwRfremM6y-SIj7D3g4vt94jfU/exec", {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
       nama: nama,
       email: email,
@@ -1018,10 +1021,11 @@ document.querySelector("form").addEventListener("submit", function(e) {
   })
   .then(res => res.text())
   .then(data => {
-    alert("Berhasil daftar!");
+    alert("Data pendaftaran tersimpan!");
   })
   .catch(err => {
-    alert("Gagal, coba lagi!");
+    alert("Gagal kirim!");
+    console.error(err);
   });
 });
 </script>
